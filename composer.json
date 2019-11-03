@@ -1,0 +1,20 @@
+{
+    "name": "kaktu/test_task",
+    "authors": [
+        {
+            "name": "kaktusv6",
+            "email": "kaktusv6@gmail.com"
+        }
+    ],
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
+    "require": {
+      "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8"
+    }
+}
