@@ -3,17 +3,19 @@
 
 namespace Fabrics;
 
+use Enum\Types;
 use Exceptions\NotFoundType;
 
 class FabricValues {
   static public function getValueByType($value, $type) {
     switch ($type) {
-      case 'целое число': return intval($value);
-      case 'строка': return strval($value);
-      case 'номер телефона': return FabricValues::convertToPhone($value);
+      case Types::INT: return intval($value);
+      case Types::STRING: return strval($value);
+      case Types::PHONE: return FabricValues::convertToPhone($value);
+      case Types::FLOAT: return floatval($value);
     }
 
-    throw new NotFoundType();
+    throw new NotFoundType($type);
   }
 
   static public function convertToPhone($value) {
