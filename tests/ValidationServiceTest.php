@@ -1,6 +1,7 @@
 <?php
 
 
+use Enum\Types;
 use PHPUnit\Framework\TestCase;
 use \Fabrics\FabricServices;
 
@@ -24,14 +25,14 @@ class ValidationServiceTest extends TestCase {
       'asd+123' => false,
       '' => false
     ];
-    $type = 'целое число';
+    $type = Types::INT;
     foreach ($values as $value => $result) {
       $this->assertEquals($result, $this->service->validateValueOfType($value, $type));;
     }
   }
 
   public function testValidationForString() {
-    $type = 'строка';
+    $type = Types::STRING;
     $this->assertTrue($this->service->validateValueOfType('123asd', $type));
     $this->assertTrue($this->service->validateValueOfType('Lorem lorem lorenm1001', $type));
     $this->assertTrue($this->service->validateValueOfType('back first second', $type));
