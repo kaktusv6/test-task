@@ -45,7 +45,7 @@ class SanitizerService implements ISanitizerService {
   private function checkValidateValue($value, $type) {
     $isValidValue = $this->validationService->validateValueOfType($value, $type);
     if (!$isValidValue) {
-      throw new NotValidateValue($type);
+      throw new NotValidateValue($value, $type);
     }
   }
 
