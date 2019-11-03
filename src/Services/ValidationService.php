@@ -4,6 +4,7 @@
 namespace Services;
 
 
+use Enum\Types;
 use Exceptions\NotFoundType;
 use Fabrics\FabricRegExp;
 
@@ -16,16 +17,20 @@ class ValidationService implements IValidationService {
 
   public function validateValueOfType($value, $type) {
     switch ($type) {
-      case "целое число":
+      case Types::INT:
         $isValidValue = is_int(filter_var($value, FILTER_VALIDATE_INT));
       break;
-      case "строка":
+      case Types::STRING:
         $isValidValue = is_string($value);
       break;
-      case "номер телефона":
+      case Types::PHONE:
         $isValidValue = $this->regularPhone->test($value);
       break;
-      default: throw new NotFoundType();
+      case Types::FLOAT:
+        $isValidValue = is_float(filter_var($value, FILTER_VALIDATE_FLOAT));
+      break;
+
+      default: throw new NotFoundType($type);
     }
 
     return $isValidValue;
