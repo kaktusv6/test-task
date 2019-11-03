@@ -3,7 +3,6 @@
 
 namespace Exceptions;
 
-
 use Exception;
 
 class EmptyDataJSON extends Exception {
