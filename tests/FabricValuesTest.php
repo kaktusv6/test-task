@@ -1,5 +1,6 @@
 <?php
 
+use Enum\Types;
 use Exceptions\NotFoundType;
 use Fabrics\FabricValues;
 use PHPUnit\Framework\TestCase;
@@ -13,10 +14,10 @@ class FabricValuesTest extends TestCase {
   }
 
   public function testGenerateDataForInteger() {
-    $this->assertEquals(123, FabricValues::getValueByType('123', 'целое число'));
-    $this->assertEquals(123, FabricValues::getValueByType('123', 'целое число'));
-    $this->assertEquals(0, FabricValues::getValueByType('0', 'целое число'));
-    $this->assertEquals(-41, FabricValues::getValueByType('-41', 'целое число'));
+    $this->assertEquals(123, FabricValues::getValueByType('123', Types::INT));
+    $this->assertEquals(123, FabricValues::getValueByType('123', Types::INT));
+    $this->assertEquals(0, FabricValues::getValueByType('0', Types::INT));
+    $this->assertEquals(-41, FabricValues::getValueByType('-41', Types::INT));
   }
 
   public function testCannotGenerateDataForInteger() {
@@ -27,8 +28,8 @@ class FabricValuesTest extends TestCase {
   }
 
   public function testGenerateDataForString() {
-    $this->assertEquals('string', FabricValues::getValueByType('string', 'строка'));
-    $this->assertEquals('123-string', FabricValues::getValueByType('123-string', 'строка'));
-    $this->assertEquals('', FabricValues::getValueByType('', 'строка'));
+    $this->assertEquals('string', FabricValues::getValueByType('string', Types::STRING));
+    $this->assertEquals('123-string', FabricValues::getValueByType('123-string', Types::STRING));
+    $this->assertEquals('', FabricValues::getValueByType('', Types::STRING));
   }
 }
