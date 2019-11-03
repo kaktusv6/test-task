@@ -10,7 +10,8 @@ class FabricValuesTest extends TestCase {
   public function testAccessConvertToPhone() {
     $this->assertEquals('79999999999', FabricValues::convertToPhone('+7 (999) 999-99-99'));
     $this->assertEquals('79999999999', FabricValues::convertToPhone('8 (999) 999-99-99'));
-    $this->assertEquals('79146452956', FabricValues::convertToPhone('8 (914) 645-29-56'));
+    $this->assertEquals('79146452956', FabricValues::convertToPhone('8 (914) 6452956'));
+    $this->assertEquals('79146352756', FabricValues::convertToPhone('89146352756'));
   }
 
   public function testGenerateDataForInteger() {
