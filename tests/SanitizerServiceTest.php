@@ -13,7 +13,7 @@ class SanitizerServiceTest extends TestCase
     parent::setUp();
   }
 
-  public function testGenerateObjectForInteger() {
+  public function testGenerateObjectFirst() {
     $accessObject = (object)[
       'foo' => 123,
       'foo1' => -1223,
@@ -52,8 +52,31 @@ class SanitizerServiceTest extends TestCase
       ]
     ];
 
-    $dataJson = file_get_contents('tests_data/test_1/data.json');
-    $typesJson = file_get_contents('tests_data/test_1/types.json');
+    echo __DIR__;
+    $dataJson = file_get_contents(__DIR__ . '/tests_data/test_1/data.json');
+    $typesJson = file_get_contents(__DIR__ . '/tests_data/test_1/types.json');
+    $testPost = [
+      'data_json' => $dataJson,
+      'types_json' => $typesJson
+    ];
+    $dataRequest = $this->service->getDataFromRequest($testPost);
+    $obj = $this->service->generateObject($dataRequest['data'], $dataRequest['types']);
+    $this->assertEquals($accessObject, $obj);
+  }
+
+  public function testGenerateObjectSecond() {
+    $accessObject = (object)[
+      'int' => 2342,
+      'string_ar' => [
+        'fl' => 54.2342,
+        'str_arrrr' => ['123', 'asd asd ', '     ', '\n\n\n\n\n']
+      ],
+      'phone' => '79823411233',
+      'phone_1' => 79812341234
+    ];;
+
+    $dataJson = file_get_contents(__DIR__ . '/tests_data/test_2/data.json');
+    $typesJson = file_get_contents(__DIR__ . '/tests_data/test_2/types.json');
     $testPost = [
       'data_json' => $dataJson,
       'types_json' => $typesJson
