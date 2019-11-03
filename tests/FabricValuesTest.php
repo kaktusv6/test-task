@@ -22,9 +22,9 @@ class FabricValuesTest extends TestCase {
   }
 
   public function testCannotGenerateDataForInteger() {
-    $this->expectException(\Exceptions\NotFoundType::class);
+    $this->expectException(NotFoundType::class);
     FabricValues::getValueByType('8 (999) 123-123-12', 'целый номер');
-    $this->expectException(\Exceptions\NotFoundType::class);
+    $this->expectException(NotFoundType::class);
     FabricValues::getValueByType('[123,1123]', 'массив');
   }
 

@@ -22,9 +22,9 @@ class RegPhone implements IRegular {
   }
 
   public function test($value): bool {
-    $isPhone = (bool)preg_match($this->checkStartString, $value);
+    $isPhone = boolval(preg_match($this->checkStartString, $value));
     $clearPhone = preg_replace($this->divisionChar, '', $value);
-    $isPhone = $isPhone && (bool)preg_match($this->regular, $clearPhone);
+    $isPhone = $isPhone && boolval(preg_match($this->regular, $clearPhone));
     return $isPhone;
   }
 }
