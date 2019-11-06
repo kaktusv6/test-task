@@ -1,6 +1,5 @@
 <?php
 
-use Fabrics\FabricRegExp;
 use PHPUnit\Framework\TestCase;
 use Regulars\RegPhone;
 
@@ -8,7 +7,7 @@ class RegularPhoneTest extends TestCase {
   private $regular;
 
   protected function setUp(): void {
-    $this->regular = FabricRegExp::getRegExp('phone');
+    $this->regular = new RegPhone();
     parent::setUp();
   }
 

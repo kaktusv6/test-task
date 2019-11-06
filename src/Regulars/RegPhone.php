@@ -4,7 +4,7 @@
 namespace Regulars;
 
 
-class RegPhone implements IRegular {
+class RegPhone {
   private $regular = '/^(8|\+?7)(\d{10})/';
   private $divisionChar = '/[^\d]/';
   private $checkStartString = '/^(8|\+?7)/';
